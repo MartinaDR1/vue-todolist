@@ -57,6 +57,10 @@ const { createApp } = Vue
             } else {
                 this.error ='Sorry! The length of the task had to be at leats 3 characters '
             }
+        },
+        changeDone(i){
+            console.log(i);
+            this.tasks[i].done = !this.tasks[i].done
         }
     }
-  }).mount('#app')
+}).mount('#app')

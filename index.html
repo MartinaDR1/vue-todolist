@@ -29,8 +29,8 @@
 
             <div class="task">
                 <ul>
-                    <li v-for="task in tasks" :class ="task.done ? 'text-decoration-line-through' : ''">
-                        {{task.text}}
+                    <li v-for="(task,index) in tasks" >
+                        <span @click="changeDone(index)" :class ="task.done ? 'text-decoration-line-through' : ''">{{task.text}}</span>
 
                     
                         <button @click="deleteItem()"><i class="fa-solid fa-xmark"></i></button>

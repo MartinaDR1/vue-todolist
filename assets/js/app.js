@@ -15,8 +15,11 @@ cliccando sul testo dell'item, invertire il valore della proprietà done del tod
 const { createApp } = Vue
 
   createApp({
+    
     data() {
       return {
+        newTask: '',
+        error: "",
         tasks: [
             {text: 'Learn HTML', 
             done: true
@@ -40,8 +43,20 @@ const { createApp } = Vue
     }
     },
     methods:{
-    deleteItem(){
-        this.tasks.shift()
-    }
+        deleteItem(){
+            this.tasks.shift()
+        },
+        addTask(){
+            if (this.newTask.length >= 3){
+                this.tasks.unshift({
+                    text:this.newTask,
+                    done: false
+                }),
+                this.newTask='',
+                this.error= null
+            } else {
+                this.error ='Sorry! The length of the task had to be at leats 3 characters '
+            }
+        }
     }
   }).mount('#app')

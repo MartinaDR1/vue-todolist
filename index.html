@@ -18,6 +18,15 @@
         </header>
 
         <main>
+            <div class="add_task">
+                <input type="text" v-model="newTask" @keyup.enter="addTask()">
+                <button @click="addTask()">Aggiungi</button>
+
+                <div class="alert alert-danger" role="alert" v-if="error">
+                    <strong>{{error}}</strong>
+                </div>
+            </div>
+
             <div class="task">
                 <ul>
                     <li v-for="task in tasks" :class ="task.done ? 'text-decoration-line-through' : ''">

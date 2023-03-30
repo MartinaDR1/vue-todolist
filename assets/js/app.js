@@ -37,6 +37,11 @@ const { createApp } = Vue
             done: false
             }
         ], 
-      }
+    }
+    },
+    methods:{
+    deleteItem(){
+        this.tasks.shift()
+    }
     }
   }).mount('#app')

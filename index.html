@@ -13,29 +13,31 @@
 </head>
 <body>
     <div id="app">
-        <header>
-            <h1>To do list</h1>
+        <header id="app_header">
+            <h1 class="text-center p-3 fw-bolder">To do list</h1>
         </header>
 
         <main>
-            <div class="add_task">
-                <input type="text" v-model="newTask" @keyup.enter="addTask()">
-                <button @click="addTask()">Aggiungi</button>
+            <div class="my_container border text-center my-4 rounded-3">
+                <div class="add_task m-3">
+                    <input class="rounded-2" type="text" v-model="newTask" @keyup.enter="addTask()">
+                    <button class="btn border mx-2" @click="addTask()">Aggiungi</button>
 
-                <div class="alert alert-danger" role="alert" v-if="error">
-                    <strong>{{error}}</strong>
+                    <div class="alert alert-danger" role="alert" v-if="error">
+                        <strong>{{error}}</strong>
+                    </div>
                 </div>
-            </div>
 
-            <div class="task">
-                <ul>
-                    <li v-for="(task,index) in tasks" >
-                        <span @click="changeDone(index)" :class ="task.done ? 'text-decoration-line-through' : ''">{{task.text}}</span>
+                <div class="task">
+                    <ul>
+                        <li v-for="(task,index) in tasks" class="d-flex justify-content-between">
+                            <span @click="changeDone(index)" :class ="task.done ? 'text-decoration-line-through' : ''">{{task.text}}</span>
 
-                    
-                        <button @click="deleteItem()"><i class="fa-solid fa-xmark"></i></button>
-                    </li>
-                </ul>
+                            
+                            <button class="bg-danger" @click="deleteItem()"><i class="fa-solid fa-xmark"></i></button>
+                        </li>
+                    </ul>
+                </div>
             </div>
         </main>
     </div>
